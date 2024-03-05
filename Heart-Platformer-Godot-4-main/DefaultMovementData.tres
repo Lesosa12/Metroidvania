@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayerMovementData" load_steps=2 format=3 uid="uid://nhd5voo3ikx1"]
 
-[ext_resource type="Script" path="res://PlayerMovementData.gd" id="1_8wlq4"]
+[ext_resource type="Script" path="res://Scripts/PlayerMovementData.gd" id="1_8wlq4"]
 
 [resource]
 script = ExtResource("1_8wlq4")

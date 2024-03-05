@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb0g2jgqog877"
-path="res://.godot/imported/black_9slice.png-5c8571a0c919b14994b430dc1fe104ad.ctex"
+uid="uid://7hp5rpqsl6bu"
+path="res://.godot/imported/slopes.png-da1ac19478d5725c940970c79b132cb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://black_9slice.png"
-dest_files=["res://.godot/imported/black_9slice.png-5c8571a0c919b14994b430dc1fe104ad.ctex"]
+source_file="res://Images/slopes.png"
+dest_files=["res://.godot/imported/slopes.png-da1ac19478d5725c940970c79b132cb5.ctex"]
 
 [params]
 

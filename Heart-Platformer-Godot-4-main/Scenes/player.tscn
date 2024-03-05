@@ -1,39 +1,39 @@
 [gd_scene load_steps=15 format=3 uid="uid://b3vkmfxunohh8"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_1h0vt"]
-[ext_resource type="Resource" uid="uid://nhd5voo3ikx1" path="res://DefaultMovementData.tres" id="2_06uy6"]
-[ext_resource type="Texture2D" uid="uid://db34qqr0dkden" path="res://player.png" id="2_jlvsk"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_mp78f"]
+[ext_resource type="Resource" uid="uid://nhd5voo3ikx1" path="res://DefaultMovementData.tres" id="2_7ri5i"]
+[ext_resource type="Texture2D" uid="uid://db34qqr0dkden" path="res://Images/player.png" id="3_78ohx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2qeu2"]
-atlas = ExtResource("2_jlvsk")
+atlas = ExtResource("3_78ohx")
 region = Rect2(0, 0, 24, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afbgn"]
-atlas = ExtResource("2_jlvsk")
+atlas = ExtResource("3_78ohx")
 region = Rect2(144, 0, 24, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ejwk3"]
-atlas = ExtResource("2_jlvsk")
+atlas = ExtResource("3_78ohx")
 region = Rect2(24, 0, 24, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gegio"]
-atlas = ExtResource("2_jlvsk")
+atlas = ExtResource("3_78ohx")
 region = Rect2(48, 0, 24, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e0ibb"]
-atlas = ExtResource("2_jlvsk")
+atlas = ExtResource("3_78ohx")
 region = Rect2(72, 0, 24, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f45b6"]
-atlas = ExtResource("2_jlvsk")
+atlas = ExtResource("3_78ohx")
 region = Rect2(96, 0, 24, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4brbp"]
-atlas = ExtResource("2_jlvsk")
+atlas = ExtResource("3_78ohx")
 region = Rect2(120, 0, 24, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_572d7"]
-atlas = ExtResource("2_jlvsk")
+atlas = ExtResource("3_78ohx")
 region = Rect2(0, 0, 24, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v2gsa"]
@@ -89,8 +89,8 @@ collision_layer = 2
 floor_constant_speed = true
 floor_snap_length = 3.0
 safe_margin = 0.1
-script = ExtResource("1_1h0vt")
-movement_data = ExtResource("2_06uy6")
+script = ExtResource("1_mp78f")
+movement_data = ExtResource("2_7ri5i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -10)

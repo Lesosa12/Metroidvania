@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bhifl221bu6i3"]
 
-[ext_resource type="PackedScene" uid="uid://dxev2igc1wpv5" path="res://world.tscn" id="1_76218"]
-[ext_resource type="PackedScene" uid="uid://b2jh5urlv1mvv" path="res://level_two.tscn" id="2_3pwt2"]
-[ext_resource type="PackedScene" uid="uid://6jsoqvcs8feb" path="res://spikes.tscn" id="2_p4tnf"]
-[ext_resource type="PackedScene" uid="uid://b7ssnkt4brfcg" path="res://heart.tscn" id="3_uefpj"]
-[ext_resource type="PackedScene" uid="uid://bx8enf5ix4chl" path="res://level_tile_map.tscn" id="4_w5pw2"]
+[ext_resource type="PackedScene" uid="uid://dxev2igc1wpv5" path="res://Scenes/world.tscn" id="1_76218"]
+[ext_resource type="PackedScene" uid="uid://b2jh5urlv1mvv" path="res://Scenes/level_two.tscn" id="2_3pwt2"]
+[ext_resource type="PackedScene" uid="uid://6jsoqvcs8feb" path="res://Scenes/spikes.tscn" id="2_p4tnf"]
+[ext_resource type="PackedScene" uid="uid://b7ssnkt4brfcg" path="res://Scenes/heart.tscn" id="3_uefpj"]
+[ext_resource type="PackedScene" uid="uid://bx8enf5ix4chl" path="res://Scenes/level_tile_map.tscn" id="4_w5pw2"]
 
 [node name="LevelOne" instance=ExtResource("1_76218")]
 next_level = ExtResource("2_3pwt2")

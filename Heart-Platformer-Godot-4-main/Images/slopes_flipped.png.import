@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bynkd4lxs6sja"
-path="res://.godot/imported/heart.png-46ac0108226a8969f121b451c7b38c9b.ctex"
+uid="uid://chwqgn5ysb277"
+path="res://.godot/imported/slopes_flipped.png-b6fca5bf9a6e3f5c80a25873be0504c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://heart.png"
-dest_files=["res://.godot/imported/heart.png-46ac0108226a8969f121b451c7b38c9b.ctex"]
+source_file="res://Images/slopes_flipped.png"
+dest_files=["res://.godot/imported/slopes_flipped.png-b6fca5bf9a6e3f5c80a25873be0504c7.ctex"]
 
 [params]
 
