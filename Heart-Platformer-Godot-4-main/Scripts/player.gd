@@ -57,7 +57,7 @@ func handle_jump():
 	if is_on_floor(): air_jump = true
 	
 	if is_on_floor() or coyote_jump_timer.time_left > 0.0:
-		if Input.is_action_pressed("jump"):
+		if Input.is_action_just_pressed("jump"):
 			velocity.y = movement_data.jump_velocity
 			coyote_jump_timer.stop()
 	elif not is_on_floor():
@@ -98,3 +98,4 @@ func update_animations(input_axis):
 
 func _on_hazard_detector_area_entered(area):
 	global_position = starting_position
+
