@@ -91,6 +91,7 @@ floor_snap_length = 3.0
 safe_margin = 0.1
 script = ExtResource("1_mp78f")
 movement_data = ExtResource("2_7ri5i")
+metadata/Player = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -10)

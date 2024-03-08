@@ -11,7 +11,7 @@
 next_level = ExtResource("2_3pwt2")
 
 [node name="Player" parent="." index="0"]
-position = Vector2(32, 112)
+position = Vector2(33, 112)
 
 [node name="Spikes" parent="." index="3" instance=ExtResource("2_p4tnf")]
 position = Vector2(128, 160)
@@ -47,3 +47,7 @@ layer_1/tile_data = PackedInt32Array(458758, 262145, 0, 458757, 196609, 0, 45875
 [node name="Door" parent="." index="14" instance=ExtResource("6_oudme")]
 position = Vector2(174, 118)
 scene_to_load = "res://Scenes/level_two.tscn"
+spawnPointPath = NodePath("../Node2D")
+
+[node name="Node2D" type="Node2D" parent="." index="15"]
+position = Vector2(75, 14)
