@@ -46,4 +46,4 @@ layer_1/tile_data = PackedInt32Array(458758, 262145, 0, 458757, 196609, 0, 45875
 
 [node name="Door" parent="." index="14" instance=ExtResource("6_oudme")]
 position = Vector2(174, 118)
-scene_to_load = ExtResource("2_3pwt2")
+scene_to_load = "res://Scenes/level_two.tscn"

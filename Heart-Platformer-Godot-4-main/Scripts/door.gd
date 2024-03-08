@@ -1,6 +1,7 @@
 extends Area2D
 
-@export var scene_to_load: PackedScene
+@export var scene_to_load: String
+@export var spawn_point_path: NodePath
 
 func _on_body_entered(body):
 	print("Player collided with the door")
@@ -8,6 +9,7 @@ func _on_body_entered(body):
 	load_scene(scene_to_load)
 
 func load_scene(path):
-	var scene = ResourceLoader.load(path)
-	if scene:
-		get_tree().change_scene(scene)
+	if path != "" and path != null:
+		var scene_instance = ResourceLoader.load(path)
+		if scene_instance:
+			get_tree().change_scene_to_packed(scene_instance)
