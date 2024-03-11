@@ -14,7 +14,6 @@ func _on_body_entered(body):
 		change_scene()
 
 func change_scene():
-	print("Changing Scene to:", nextScene)
 	var nextSceneInstance = load(nextScene)
 	if nextSceneInstance == null:
 		print("Error loading scene:", nextScene)
