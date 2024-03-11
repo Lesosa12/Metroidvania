@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2jh5urlv1mvv"]
+[gd_scene load_steps=4 format=3 uid="uid://b2jh5urlv1mvv"]
 
 [ext_resource type="PackedScene" uid="uid://dxev2igc1wpv5" path="res://Scenes/world.tscn" id="1_kl5rc"]
 [ext_resource type="PackedScene" uid="uid://6jsoqvcs8feb" path="res://Scenes/spikes.tscn" id="2_ooqc7"]
 [ext_resource type="PackedScene" uid="uid://b7ssnkt4brfcg" path="res://Scenes/heart.tscn" id="3_mjyj3"]
-[ext_resource type="PackedScene" uid="uid://syopt8tq8nb6" path="res://Scenes/door.tscn" id="4_3jqf1"]
 
 [node name="LevelTwo" instance=ExtResource("1_kl5rc")]
 
@@ -55,10 +54,5 @@ position = Vector2(176, 176)
 [node name="Spikes6" parent="." index="16" instance=ExtResource("2_ooqc7")]
 position = Vector2(192, 176)
 
-[node name="Node2D" type="Node2D" parent="." index="18"]
-position = Vector2(89, -24)
-
-[node name="Door" parent="." index="19" instance=ExtResource("4_3jqf1")]
-position = Vector2(100, 118)
-scene_to_load = "res://Scenes/level_one.tscn"
-spawnPointPath = NodePath("../Node2D")
+[node name="door1" type="Node2D" parent="." index="18"]
+position = Vector2(121, 25)

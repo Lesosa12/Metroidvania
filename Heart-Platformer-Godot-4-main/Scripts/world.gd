@@ -4,6 +4,8 @@ extends Node2D
 
 var level_time = 0.0
 var start_level_msec = 0.0
+# Dictionary to store door names and their associated spawn points
+var spawnPoints = {}
 
 @onready var level_completed = $CanvasLayer/LevelCompleted
 @onready var start_in = %StartIn
@@ -51,3 +53,11 @@ func _on_level_completed_retry():
 
 func _on_level_completed_next_level():
 	go_to_next_level()
+
+# Add a method to set spawn points for each door
+func set_spawn_point(doorName, spawnPoint):
+	spawnPoints[doorName] = spawnPoint
+
+# Add a method to get the spawn point for a specific door
+func get_spawn_point(doorName):
+	return spawnPoints.get(doorName, Vector2.ZERO)  # Default spawn point is Vector2.ZERO

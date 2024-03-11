@@ -1,31 +1,32 @@
 extends Area2D
 
-@export var scene_to_load: String
+# Export the next scene path
+@export var nextScene: String = "" #fill with the scene path like: res://Scenes/level_two.tscn
+# Export the door name
+@export var doorName: String = "" #name door and spawn point something unique to link
 
+func _ready():
+	pass
 
 func _on_body_entered(body):
-	print("Player collided with the door")
-	$CollisionShape2D.set_deferred("disabled", true)
-	load_scene(scene_to_load)
-	
+	print("Body Entered:", body.name)
+	if body.name == "Player":
+		change_scene()
 
-func load_scene(path):
-	if path != "" and path != null:
-		var scene_instance = ResourceLoader.load(path)
-		if scene_instance:
-			get_tree().change_scene_to_packed(scene_instance)
+func change_scene():
+	print("Changing Scene to:", nextScene)
+	var nextSceneInstance = load(nextScene)
+	if nextSceneInstance == null:
+		print("Error loading scene:", nextScene)
+		return
 
-# In the previous scene (when player interacts with the door)
-func _on_door_interaction():
-	var nextScene = "res://next_scene.tscn"
-	var spawnPoint = "spawn_point_name"
-	Global.nextSceneSpawnPoint = spawnPoint
-	get_tree().change_scene(nextScene)
+	var nextSceneNode = nextSceneInstance.instance()
+	if nextSceneNode == null:
+		print("Error instancing scene:", nextScene)
+		return
 
-# In the new scene (when the scene is loaded)
-func _on_scene_loaded():
-	if Global.nextSceneSpawnPoint:
-		var playerSpawnPoint = get_node(Global.nextSceneSpawnPoint)
-		player.position = playerSpawnPoint.global_position
+	# Set the spawn point for the player in the next scene
+	nextSceneNode.set_spawn_point(doorName, global_position)
 
-
+	# Change the scene
+	get_tree().change_scene_to_packed(nextSceneNode)
