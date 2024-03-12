@@ -15,17 +15,4 @@ func _on_body_entered(body):
 
 func change_scene():
 	var nextSceneInstance = load(nextScene)
-	if nextSceneInstance == null:
-		print("Error loading scene:", nextScene)
-		return
-
-	var nextSceneNode = nextSceneInstance.instance()
-	if nextSceneNode == null:
-		print("Error instancing scene:", nextScene)
-		return
-
-	# Set the spawn point for the player in the next scene
-	nextSceneNode.set_spawn_point(doorName, global_position)
-
-	# Change the scene
-	get_tree().change_scene_to_packed(nextSceneNode)
+	get_tree().change_scene_to_packed(nextSceneInstance)
