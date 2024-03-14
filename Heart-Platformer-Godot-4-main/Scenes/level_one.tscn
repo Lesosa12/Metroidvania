@@ -45,6 +45,4 @@ layer_0/tile_data = PackedInt32Array(0, 131072, 0, 65536, 131072, 1, 131072, 131
 layer_1/tile_data = PackedInt32Array(458758, 262145, 0, 458757, 196609, 0, 458755, 393218, 0, 458766, 262145, 0, 458765, 196609, 0, 458759, 131072, 0, 524295, 131072, 1, 524294, 65536, 1, 524290, 65536, 1, 458754, 65536, 0, 524291, 327682, 0, 524293, 327681, 0, 524301, 327681, 0, 458767, 131072, 0, 524302, 65536, 1, 524303, 327680, 2)
 
 [node name="Door" parent="." index="14" instance=ExtResource("6_oudme")]
-position = Vector2(197, 118)
-nextScene = "res://Scenes/level_two.tscn"
-doorName = "door1"
+position = Vector2(195, 117)
