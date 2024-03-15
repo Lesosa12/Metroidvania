@@ -8,8 +8,6 @@
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_thyox")
-nextScene = "res://Scenes/level_two.tscn"
-connectedSpawnPoint = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4ku7c")
