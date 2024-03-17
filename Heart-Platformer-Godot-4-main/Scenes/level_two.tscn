@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2jh5urlv1mvv"]
+[gd_scene load_steps=5 format=3 uid="uid://b2jh5urlv1mvv"]
 
 [ext_resource type="PackedScene" uid="uid://dxev2igc1wpv5" path="res://Scenes/world.tscn" id="1_kl5rc"]
 [ext_resource type="PackedScene" uid="uid://6jsoqvcs8feb" path="res://Scenes/spikes.tscn" id="2_ooqc7"]
 [ext_resource type="PackedScene" uid="uid://b7ssnkt4brfcg" path="res://Scenes/heart.tscn" id="3_mjyj3"]
+[ext_resource type="PackedScene" uid="uid://syopt8tq8nb6" path="res://Scenes/door.tscn" id="4_vq62m"]
 
 [node name="LevelTwo" instance=ExtResource("1_kl5rc")]
 
@@ -54,8 +55,16 @@ position = Vector2(176, 176)
 [node name="Spikes6" parent="." index="16" instance=ExtResource("2_ooqc7")]
 position = Vector2(192, 176)
 
-[node name="spawn2" type="Node2D" parent="." index="18"]
+[node name="Door2" parent="." index="18" instance=ExtResource("4_vq62m")]
+nextScene = null
+spawnPointName = null
+
+[node name="SpawnPoint2" type="Node2D" parent="Door2" index="2"]
 position = Vector2(112, 32)
 
-[node name="spwan1" type="Node2D" parent="." index="19"]
+[node name="Door1" parent="." index="19" instance=ExtResource("4_vq62m")]
+nextScene = null
+spawnPointName = null
+
+[node name="SpawnPoint1" type="Node2D" parent="Door1" index="2"]
 position = Vector2(248, 64)

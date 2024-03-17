@@ -7,6 +7,7 @@ var start_level_msec = 0.0
 # Dictionary to store door names and their associated spawn points
 var spawnPoints = {}
 
+
 @onready var level_completed = $CanvasLayer/LevelCompleted
 @onready var start_in = %StartIn
 @onready var start_in_label = %StartInLabel
