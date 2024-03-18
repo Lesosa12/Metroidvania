@@ -11,31 +11,15 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		change_scene(nextScene, doorName)
-		
-func change_scene(nextScene: String, doorName: String):
+		change_scene()
+		var globalDataNode = get_node("res://Scenes/global.tscn")
+		var spawnPointPath = globalDataNode.spawnPoints.get(nextScene, {}).get(doorName, "")
+		# Change scene and spawn player at spawnPointPath
+func change_scene():
 	var nextSceneInstance = load(nextScene)
 	if nextSceneInstance == null:
 		print("Error loading scene:", nextScene)
 		return
-
-	var nextSceneNode = nextSceneInstance.instance()
-	if nextSceneNode == null:
-		print("Error instancing scene:", nextScene)
-		return
-
-	var spawnPointPath = spawnPoints.get(nextScene, {}).get(doorName, "")
-	var spawnPoint = nextSceneNode.get_node_or_null(spawnPointPath)
-	if spawnPoint == null:
-		print("Error: Spawn point not found for door:", doorName)
-		return
-
-	# Set player's position to the spawn point
-	var playerNode = nextSceneNode.get_node_or_null("PlayerNodeName")
-	if playerNode != null:
-		playerNode.global_position = spawnPoint.global_position
-	else:
-		print("Error: Player node not found in the scene")
 
 	# Change the scene
 	get_tree().paused = false

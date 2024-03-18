@@ -2,12 +2,9 @@ extends Node
 
 static var nextSceneSpawnPoint = {}
 static var currentDoor = ""
-# Get a reference to the Global node
-# Get a reference to the Global node
-@onready var globalNode = get_node("/root/Global")
 
 
-# Define the spawn points for each scene and door
+# Global scope
 var spawnPoints = {
 	"level_one.tscn": {
 		"Door1": "SpawnPoints/SpawnPoint1",
@@ -26,7 +23,8 @@ func get_spawn_point(scene: String, door: String) -> String:
 
 func _ready():
 	var spawnPoint = Global.nextSceneSpawnPoint.get(Global.currentDoor, Vector2.ZERO)
-	var playerNode = $"../Player"
+	var playerNode = $Player
+
 	if playerNode != null:
 		playerNode.global_position = spawnPoint
 	else:

@@ -56,15 +56,11 @@ position = Vector2(176, 176)
 position = Vector2(192, 176)
 
 [node name="Door2" parent="." index="18" instance=ExtResource("4_vq62m")]
-nextScene = null
-spawnPointName = null
 
 [node name="SpawnPoint2" type="Node2D" parent="Door2" index="2"]
 position = Vector2(112, 32)
 
 [node name="Door1" parent="." index="19" instance=ExtResource("4_vq62m")]
-nextScene = null
-spawnPointName = null
 
 [node name="SpawnPoint1" type="Node2D" parent="Door1" index="2"]
 position = Vector2(248, 64)
