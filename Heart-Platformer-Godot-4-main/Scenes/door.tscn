@@ -8,6 +8,10 @@
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_thyox")
+nextScene = null
+spawnPointName = null
+doorName = null
+spawnPointPath = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4ku7c")

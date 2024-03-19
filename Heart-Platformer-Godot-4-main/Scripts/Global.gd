@@ -28,4 +28,4 @@ func _ready():
 	if playerNode != null:
 		playerNode.global_position = spawnPoint
 	else:
-		print("PlayerNodeName not found in the scene.")
+		print("PlayerNode not found in the scene.")
