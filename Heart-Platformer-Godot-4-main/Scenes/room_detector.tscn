@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcllqk3wi5msp"]
+
+[ext_resource type="Script" path="res://Scripts/room_detector.gd" id="1_q6gji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xyy5"]
+
+[node name="RoomDetector" type="Area2D"]
+script = ExtResource("1_q6gji")
+TILE_SIZE = null
+ROOMPOSITION = null
+ROOMSIZE = null
+update = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8xyy5")

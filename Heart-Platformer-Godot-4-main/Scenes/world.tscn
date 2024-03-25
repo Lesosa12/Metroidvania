@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxev2igc1wpv5"]
+[gd_scene load_steps=9 format=3 uid="uid://dxev2igc1wpv5"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_0p26b"]
 [ext_resource type="PackedScene" uid="uid://b3vkmfxunohh8" path="res://Scenes/player.tscn" id="2_5i3lu"]
+[ext_resource type="PackedScene" uid="uid://b5y2c1d8ggrbw" path="res://Scenes/player_camera.tscn" id="3_81xb0"]
 [ext_resource type="PackedScene" uid="uid://cbmvs6l784pvc" path="res://Scenes/level_completed.tscn" id="5_71w1o"]
 [ext_resource type="PackedScene" uid="uid://bx8enf5ix4chl" path="res://Scenes/level_tile_map.tscn" id="6_neyq2"]
 
@@ -46,6 +47,8 @@ _data = {
 script = ExtResource("1_0p26b")
 
 [node name="Player" parent="." instance=ExtResource("2_5i3lu")]
+
+[node name="PlayerCamera" parent="." instance=ExtResource("3_81xb0")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
