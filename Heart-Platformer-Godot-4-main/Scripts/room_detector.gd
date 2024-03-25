@@ -16,7 +16,7 @@ func _ready():
 	$CollisionShape2D.shape.size = Vector2(TILE_SIZE, TILE_SIZE)
 	$"CollisionShape2D".scale = ROOMSIZE
 	$"CollisionShape2D".posistion = (ROOMSIZE - Vector2(1,1))*0.5*TILE_SIZE
-	position = ROOMPOSITION*TILE_SIZE+Vector2(TILE_SIZE, TILE_SIZE)*0.5
+	position = ROOMPOSITION*TILE_SIZE*1.0+Vector2(TILE_SIZE, TILE_SIZE)*0.5
 	
 	roomscale = ROOMSIZE*TILE_SIZE
 	roomposition = roomscale*0.5+ROOMPOSITION*TILE_SIZE
@@ -27,7 +27,7 @@ func _process(delta):
 		$CollisionShape2D.shape.size = Vector2(TILE_SIZE, TILE_SIZE)
 		$"CollisionShape2D".scale = ROOMSIZE
 		$"CollisionShape2D".posistion = (ROOMSIZE - Vector2(1,1))*0.5*TILE_SIZE
-		position = ROOMPOSITION*TILE_SIZE+Vector2(TILE_SIZE, TILE_SIZE)*0.5
+		position = ROOMPOSITION*TILE_SIZE*1.0+Vector2(TILE_SIZE, TILE_SIZE)*0.5
 		update = false 
 
 

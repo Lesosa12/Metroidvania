@@ -6,10 +6,8 @@
 
 [node name="RoomDetector" type="Area2D"]
 script = ExtResource("1_q6gji")
-TILE_SIZE = null
-ROOMPOSITION = null
-ROOMSIZE = null
-update = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8xyy5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
