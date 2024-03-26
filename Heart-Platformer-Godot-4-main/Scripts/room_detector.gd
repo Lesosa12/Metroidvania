@@ -2,9 +2,12 @@
 extends Area2D
 
 @export var TILE_SIZE:int = 16
-@export var ROOMPOSITION:=Vector2i.ZERO
+@export var ROOMPOSITION:=Vector2.ZERO
 @export var ROOMSIZE := Vector2.ZERO
 @export var update:bool = false
+
+@export var leftupMargin:=Vector2.ZERO
+@export var rightdownMargin:=Vector2.ZERO
 
 signal roomEntered(roomposition, roomscale)
 
@@ -18,8 +21,8 @@ func _ready():
 	$"CollisionShape2D".posistion = (ROOMSIZE - Vector2(1,1))*0.5*TILE_SIZE
 	position = ROOMPOSITION*TILE_SIZE*1.0+Vector2(TILE_SIZE, TILE_SIZE)*0.5
 	
-	roomscale = ROOMSIZE*TILE_SIZE
-	roomposition = roomscale*0.5+ROOMPOSITION*TILE_SIZE
+	roomscale = (ROOMSIZE+rightdownMargin+leftupMargin)*TILE_SIZE
+	roomposition = roomscale*0.5+(ROOMPOSITION-leftupMargin)*TILE_SIZE*1.0
 
 
 func _process(delta):
