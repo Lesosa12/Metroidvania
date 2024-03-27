@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxev2igc1wpv5"]
+[gd_scene load_steps=10 format=3 uid="uid://dxev2igc1wpv5"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_0p26b"]
 [ext_resource type="PackedScene" uid="uid://b3vkmfxunohh8" path="res://Scenes/player.tscn" id="2_5i3lu"]
@@ -42,6 +42,8 @@ _data = {
 "RESET": SubResource("Animation_rgliv"),
 "countdown": SubResource("Animation_md5ff")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15llu"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_0p26b")
@@ -99,5 +101,13 @@ libraries = {
 "": SubResource("AnimationLibrary_pnolj")
 }
 
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("RectangleShape2D_15llu")
+
 [connection signal="next_level" from="CanvasLayer/LevelCompleted" to="." method="_on_level_completed_next_level"]
 [connection signal="retry" from="CanvasLayer/LevelCompleted" to="." method="_on_level_completed_retry"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

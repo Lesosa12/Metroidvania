@@ -12,15 +12,15 @@ var stored_scale = Vector2.ZERO
 # Camera parameters
 var cameraOffset = Vector2(0, -22)
 var cameraSpeed = 5.0
-# Define initial camera boundaries for the first room
-var minXRoom1 = -500
-var maxXRoom1 = 500
-var minYRoom1 = -500
-var maxYRoom1 = 500
 
 func _ready():
+	Events.room_completed.connect(func(room):
+		global_position = room.global_position
+	)
+	
+	
 	get_window().size_changed.connect(set_screenSize)
-	set_screenSize()
+	#set_screenSize()
 	
 	for i in get_tree().get_nodes_in_group("roomDetector"):
 		i.roomEntered.connect(setRoom)
@@ -30,12 +30,12 @@ func setRoom(roomposition, roomscale):
 	setPosition(roomposition)
 
 func setZoom(roomscale):
-	var nzoomVector = SCREEN_SIZE/roomscale
-	var nzoom = min(nzoomVector.x, nzoomVector.y)
-	nzoom = roundf(nzoom*10)/10
+	#var nzoomVector = SCREEN_SIZE/roomscale
+	#var nzoom = min(nzoomVector.x, nzoomVector.y)
+	#nzoom = roundf(nzoom*10)/10
 	
 	var zoomTween = create_tween()
-	zoomTween.tween_property(self, "zoom", Vector2(nzoom, nzoom), 0.5)
+	#zoomTween.tween_property(self, "zoom", Vector2(nzoom, nzoom), 0.5)
 	zoomTween.play()
 	
 	#zoom = Vector2(nzoom,nzoom)
@@ -51,7 +51,13 @@ func setPosition(roomposition):
 	stored_position = roomposition
 
 func _process(delta):
-	pass
+	if player:
+		# Calculate the target position for the camera
+		var targetPosition = player.global_position + cameraOffset
+
+		# Interpolate the camera's position towards the target position
+		global_position = global_position.lerp(targetPosition, delta * cameraSpeed)
+
 
 func set_screenSize():
 	SCREEN_SIZE = get_window().size

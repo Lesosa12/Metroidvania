@@ -62,3 +62,7 @@ func set_spawn_point(doorName, spawnPoint):
 # Add a method to get the spawn point for a specific door
 func get_spawn_point(doorName):
 	return spawnPoints.get(doorName, Vector2.ZERO)  # Default spawn point is Vector2.ZERO
+
+
+func _on_player_detector_body_entered(body):
+	Events.room_entered.emit(self)
