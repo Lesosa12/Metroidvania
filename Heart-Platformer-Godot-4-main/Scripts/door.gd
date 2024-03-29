@@ -1,6 +1,13 @@
 extends Area2D
 
-# Export the next room name and camera position
+class_name Door
+
+@export var destination_level_tag: String
+@export var destination_door_tag: String
+@export var spawn_direction = "up"
+
+@onready var spawn = $Spawn
+
 @export var nextRoomName: String = ""
 @export var cameraPosition: Vector2 = Vector2.ZERO
 
@@ -8,8 +15,9 @@ extends Area2D
 
 func _on_body_entered(body):
 	body.global_position = marker_2d.global_position
-	if body.name == "Player":
-		change_room()
+	if body is Player:
+		NavigationManager.go_to_level(destination_level_tag, destination_door_tag)
+		#change_room()
 
 func change_room():
 	var globalCamera = get_node("/root/Camera2D")

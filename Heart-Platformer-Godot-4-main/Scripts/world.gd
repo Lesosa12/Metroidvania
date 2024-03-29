@@ -15,6 +15,9 @@ var spawnPoints = {}
 @onready var level_time_label = %LevelTimeLabel
 
 func _ready():
+	if NavigationManager.spawn_door_tag != null:
+		_on_level_spawn(NavigationManager.spawn_door_tag)
+	
 	if not next_level is PackedScene:
 		level_completed.next_level_button.text = "Victory Screen"
 		next_level = load("res://victory_screen.tscn")
@@ -28,6 +31,11 @@ func _ready():
 	get_tree().paused = false
 	start_in.visible = false
 	start_level_msec = Time.get_ticks_msec()
+
+func _on_level_spawn(destination_tag: String):
+	var door_path = "Doors/Door" + destination_tag
+	var door = get_node(door_path) as Door
+	NavigationManager.trigger_player_spawn(door.spawn.global_position, door.spawn_direction)
 
 func _process(delta):
 	level_time = Time.get_ticks_msec() - start_level_msec

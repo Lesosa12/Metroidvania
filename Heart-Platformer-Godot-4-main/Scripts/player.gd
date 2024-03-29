@@ -1,18 +1,28 @@
 extends CharacterBody2D
 
-@export var movement_data : PlayerMovementData
+class_name Player
 
+@export var movement_data : PlayerMovementData
 
 var air_jump = false
 var just_wall_jumped = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var was_wall_normal = Vector2.ZERO
 
+@onready var animation_player: AnimatedSprite2D = $AnimatedSprite2D
+
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var coyote_jump_timer = $CoyoteJumpTimer
 @onready var starting_position = global_position
 @onready var wall_jump_timer = $WallJumpTimer
 
+func _ready():
+	NavigationManager.on_trigger_player_spawn.connect(_on_spawn)
+
+func _on_spawn(positon: Vector2, direction: String):
+	global_position = position
+	animation_player.play("move_" + direction)
+	animation_player.stop()
 
 func _physics_process(delta):
 	apply_gravity(delta)

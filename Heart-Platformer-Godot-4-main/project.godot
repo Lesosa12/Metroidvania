@@ -21,6 +21,7 @@ config/icon="res://Images/icon.svg"
 Events="*res://Scripts/Events.gd"
 LevelTransition="*res://Scenes/level_transition.tscn"
 Global="*res://Scripts/Global.gd"
+NavigationManager="*res://Scripts/navigation_manager.gd"
 
 [display]
 
