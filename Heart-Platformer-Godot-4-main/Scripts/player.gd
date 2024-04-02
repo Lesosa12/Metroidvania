@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 class_name Player
 
+var bullet  = preload("res://Scenes/bullet.tscn")
+@onready var muzzle : Marker2D = $Muzzle
+
 @export var movement_data : PlayerMovementData
 
 var air_jump = false
@@ -16,8 +19,14 @@ var was_wall_normal = Vector2.ZERO
 @onready var starting_position = global_position
 @onready var wall_jump_timer = $WallJumpTimer
 
+enum State {Idle, Run, Jump, Shoot}
+
+var current_state : State
+var muzzle_position 
+
 func _ready():
 	NavigationManager.on_trigger_player_spawn.connect(_on_spawn)
+	muzzle_position = muzzle.position
 
 func _on_spawn(positon: Vector2, direction: String):
 	global_position = position
@@ -45,6 +54,8 @@ func _physics_process(delta):
 	var just_left_wall = was_on_wall and not is_on_wall()
 	if just_left_wall:
 		wall_jump_timer.start()
+	player_muzzle_position()
+	player_shooting(delta)
 	update_animations(input_axis)
 
 func apply_gravity(delta):
@@ -98,6 +109,22 @@ func apply_air_resistance(input_axis, delta):
 	if input_axis == 0 and not is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, movement_data.air_resistance * delta)
 
+func player_shooting(delta):
+	var direction = input_movement()
+	
+	if direction != 0 and Input.is_action_just_pressed("shoot"):
+		var bullet_instance = bullet.instantiate() as Node2D
+		bullet_instance.direction = direction
+		bullet_instance.global_position = muzzle.global_position
+		get_parent().add_child(bullet_instance)
+		current_state = State.Shoot
+
+func player_muzzle_position():
+	var direction = input_movement()
+	
+	if direction > 0:
+		muzzle.position.x = muzzle_position.x
+
 func update_animations(input_axis):
 	if input_axis != 0:
 		animated_sprite_2d.flip_h = (input_axis < 0)
@@ -107,6 +134,9 @@ func update_animations(input_axis):
 	
 	if not is_on_floor():
 		animated_sprite_2d.play("jump")
+
+func input_movement():
+	var direction : float = Input.get_axis("move_left", "move_right")
 
 func _on_hazard_detector_area_entered(area):
 	global_position = starting_position

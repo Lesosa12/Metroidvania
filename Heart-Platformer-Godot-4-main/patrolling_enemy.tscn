@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://btuc1511ameck"]
+
+[ext_resource type="Script" path="res://Patrolling Enemy.gd" id="1_rn6u8"]
+
+[node name="Patrolling Enemy" type="CharacterBody2D" node_paths=PackedStringArray("patrol_points")]
+collision_layer = 16
+script = ExtResource("1_rn6u8")
+patrol_points = NodePath("Patrol Points")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Patrol Points" type="Node2D" parent="."]
+
+[node name="Point1" type="Marker2D" parent="Patrol Points"]
+position = Vector2(-143, 0)
+
+[node name="Point2" type="Marker2D" parent="Patrol Points"]
+position = Vector2(190, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
