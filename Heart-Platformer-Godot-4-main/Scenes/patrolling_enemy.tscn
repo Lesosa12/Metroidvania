@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://btuc1511ameck"]
+[gd_scene load_steps=3 format=3 uid="uid://btuc1511ameck"]
 
-[ext_resource type="Script" path="res://Patrolling Enemy.gd" id="1_rn6u8"]
+[ext_resource type="Script" path="res://Scripts/Patrolling Enemy.gd" id="1_doag3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l6nxk"]
 
 [node name="Patrolling Enemy" type="CharacterBody2D" node_paths=PackedStringArray("patrol_points")]
 collision_layer = 16
-script = ExtResource("1_rn6u8")
+script = ExtResource("1_doag3")
 patrol_points = NodePath("Patrol Points")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -23,4 +25,12 @@ position = Vector2(-143, 0)
 [node name="Point2" type="Marker2D" parent="Patrol Points"]
 position = Vector2(190, 0)
 
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_l6nxk")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
