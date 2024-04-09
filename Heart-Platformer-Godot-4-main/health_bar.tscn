@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://f5fofbsd7qma"]
+
+[ext_resource type="Script" path="res://health_bar.gd" id="1_w4nr1"]
+
+[node name="HealthBar" type="Node2D"]
+script = ExtResource("1_w4nr1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,8 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3vkmfxunohh8"]
+[gd_scene load_steps=21 format=3 uid="uid://b3vkmfxunohh8"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_mp78f"]
 [ext_resource type="Resource" uid="uid://nhd5voo3ikx1" path="res://DefaultMovementData.tres" id="2_7ri5i"]
+[ext_resource type="Shader" uid="uid://dn0i5rg3nhltg" path="res://Scenes/player_hit_flash_shader.tres" id="3_3opjh"]
 [ext_resource type="Texture2D" uid="uid://db34qqr0dkden" path="res://Images/player.png" id="3_78ohx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c7f6b"]
+shader = ExtResource("3_3opjh")
+shader_parameter/BooleanParameter = false
+shader_parameter/hit_color = Color(0.76667, 0, 0.188526, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2qeu2"]
 atlas = ExtResource("3_78ohx")
@@ -84,7 +90,46 @@ size = Vector2(8, 15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1anyu"]
 size = Vector2(6, 12)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecm5x"]
+
+[sub_resource type="Animation" id="Animation_ln1gv"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_uqiwg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ivone"]
+_data = {
+"RESET": SubResource("Animation_uqiwg"),
+"hit": SubResource("Animation_ln1gv")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 floor_constant_speed = true
 floor_snap_length = 3.0
@@ -94,6 +139,7 @@ movement_data = ExtResource("2_7ri5i")
 metadata/Player = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_c7f6b")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_v2gsa")
 animation = &"idle"
@@ -121,4 +167,18 @@ shape = SubResource("RectangleShape2D_1anyu")
 
 [node name="Muzzle" type="Marker2D" parent="."]
 
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_ecm5x")
+
+[node name="HitAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_ivone")
+}
+
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

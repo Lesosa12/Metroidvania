@@ -22,6 +22,8 @@ Events="*res://Scripts/Events.gd"
 LevelTransition="*res://Scenes/level_transition.tscn"
 Global="*res://Scripts/Global.gd"
 NavigationManager="*res://Scripts/navigation_manager.gd"
+HealthManager="*res://Scripts/health_manager.gd"
+CollectibleManager="*res://Scripts/collectible_manager.gd"
 
 [display]
 
@@ -124,6 +126,8 @@ shoot={
 2d_physics/layer_3="Hazards"
 2d_physics/layer_4="Door"
 2d_physics/layer_5="Enemy"
+2d_physics/layer_6="Pickup"
+2d_physics/layer_7="Collectable"
 
 [rendering]
 

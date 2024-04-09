@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxev2igc1wpv5"]
+[gd_scene load_steps=12 format=3 uid="uid://dxev2igc1wpv5"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_0p26b"]
 [ext_resource type="PackedScene" uid="uid://b3vkmfxunohh8" path="res://Scenes/player.tscn" id="2_5i3lu"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cbmvs6l784pvc" path="res://Scenes/level_completed.tscn" id="5_71w1o"]
 [ext_resource type="PackedScene" uid="uid://peuu5o0yqd0m" path="res://Scenes/parallax_background.tscn" id="6_5x8y1"]
 [ext_resource type="PackedScene" uid="uid://bx8enf5ix4chl" path="res://Scenes/level_tile_map.tscn" id="6_neyq2"]
+[ext_resource type="PackedScene" uid="uid://cpvcu2li7gjys" path="res://game_screen.tscn" id="7_bfssy"]
 
 [sub_resource type="Animation" id="Animation_rgliv"]
 length = 0.001
@@ -51,8 +52,9 @@ script = ExtResource("1_0p26b")
 
 [node name="Player" parent="." instance=ExtResource("2_5i3lu")]
 
-[node name="PlayerCamera" parent="." instance=ExtResource("3_81xb0")]
+[node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_81xb0")]
 editor_draw_limits = true
+player = NodePath("../Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -117,6 +119,8 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_15llu")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("6_5x8y1")]
+
+[node name="GameScreen" parent="." instance=ExtResource("7_bfssy")]
 
 [connection signal="next_level" from="CanvasLayer/LevelCompleted" to="." method="_on_level_completed_next_level"]
 [connection signal="retry" from="CanvasLayer/LevelCompleted" to="." method="_on_level_completed_retry"]

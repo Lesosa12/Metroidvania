@@ -6,8 +6,10 @@ var SCREEN_SIZE = Vector2.ZERO
 var stored_position = Vector2.ZERO
 var stored_scale = Vector2.ZERO
 
+
+@export var player : CharacterBody2D
 # Player node (set in the editor)
-@onready var player = get_node("../Player")
+#@onready var player = get_node("../Player")
 
 # Camera parameters
 var cameraOffset = Vector2(0, -22)
@@ -58,6 +60,9 @@ func _process(delta):
 		# Interpolate the camera's position towards the target position
 		global_position = global_position.lerp(targetPosition, delta * cameraSpeed)
 
+func _physics_process(delta):
+	if player != null:
+		global_position = player.global_position
 
 func set_screenSize():
 	SCREEN_SIZE = get_window().size
