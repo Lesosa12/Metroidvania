@@ -6,16 +6,24 @@ var SCREEN_SIZE = Vector2.ZERO
 var stored_position = Vector2.ZERO
 var stored_scale = Vector2.ZERO
 
-
+@export_category("Follow Character")
 @export var player : CharacterBody2D
+
+@export_category("Camera Smoothing")
+@export var smoothing_enabled : bool
+@export_range(1,10) var smoothing_distance : int = 8
+
 # Player node (set in the editor)
 #@onready var player = get_node("../Player")
-
 # Camera parameters
 var cameraOffset = Vector2(0, -22)
 var cameraSpeed = 5.0
+var weight : float
 
 func _ready():
+	weight = float(11 - smoothing_distance) / 100
+	
+	
 	Events.room_completed.connect(func(room):
 		global_position = room.global_position
 	)
@@ -62,7 +70,16 @@ func _process(delta):
 
 func _physics_process(delta):
 	if player != null:
-		global_position = player.global_position
+		var camera_position : Vector2
+		
+		if smoothing_enabled:
+			camera_position = lerp(global_position, player.global_position, weight)
+		else:
+			camera_position = player.global_position
+		
+		#print("Weight: ", weight, "Camera Position: ", camera_position, "Camera Pixel Floor", camera_position.floor())
+		
+		global_position = player.global_position.floor()
 
 func set_screenSize():
 	SCREEN_SIZE = get_window().size

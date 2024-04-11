@@ -5,6 +5,7 @@ class_name Door
 @export var destination_level_tag: String
 @export var destination_door_tag: String
 @export var spawn_direction = "up"
+@export var next_scene : String
 
 @onready var spawn = $Spawn
 
@@ -13,11 +14,17 @@ class_name Door
 
 @onready var marker_2d = $Marker2D
 
-func _on_body_entered(body):
+func _on_exit_area_2d_body_entered(body):
 	body.global_position = marker_2d.global_position
-	if body is Player:
+	if body.is_in_group("Player"):
+		var player = body as CharacterBody2D
+		player.queue_free()
 		NavigationManager.go_to_level(destination_level_tag, destination_door_tag)
 		#change_room()
+		
+		await get_tree().create_timer(3.0).timeout
+		#print("scene transition")
+		SceneManager.transition_to_scene(next_scene)
 
 func change_room():
 	var globalCamera = get_node("/root/Camera2D")

@@ -57,11 +57,11 @@ layer_0/tile_data = PackedInt32Array(655360, 65536, 1, 589824, 65536, 1, 524288,
 
 [node name="Door2" parent="." index="18" instance=ExtResource("4_vq62m")]
 
-[node name="SpawnPoint2" type="Node2D" parent="Door2" index="2"]
+[node name="SpawnPoint2" type="Node2D" parent="Door2" index="1"]
 position = Vector2(56, 55)
 
 [node name="Door1" parent="." index="19" instance=ExtResource("4_vq62m")]
 position = Vector2(150, 21)
 
-[node name="SpawnPoint1" type="Node2D" parent="Door1" index="2"]
+[node name="SpawnPoint1" type="Node2D" parent="Door1" index="1"]
 position = Vector2(248, 64)
