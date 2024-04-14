@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvehyfvtlvtvy"]
+
+[ext_resource type="Script" path="res://Hazards/Enemy/Effects/EnemyDeathEffect.gd" id="1_xs3p1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5mvpb"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"EnemyDeath",
+"speed": 5.0
+}]
+
+[node name="EnemyDeathEffect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_5mvpb")
+animation = &"EnemyDeath"
+script = ExtResource("1_xs3p1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

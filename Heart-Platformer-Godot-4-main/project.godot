@@ -11,21 +11,21 @@ config_version=5
 [application]
 
 config/name="Heart Platformer"
-run/main_scene="res://Scenes/start_menu.tscn"
+run/main_scene="res://Game UI/start_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
 config/icon="res://Images/icon.svg"
 
 [autoload]
 
-Events="*res://Scripts/Events.gd"
-LevelTransition="*res://Scenes/level_transition.tscn"
-Global="*res://Scripts/Global.gd"
-NavigationManager="*res://Scripts/navigation_manager.gd"
-HealthManager="*res://Scripts/health_manager.gd"
-CollectibleManager="*res://Scripts/collectible_manager.gd"
-SceneManager="*res://Scenes/scene_manager.tscn"
-GameManager="*res://Scripts/game_manager.gd"
+Events="*res://Game/Events.gd"
+LevelTransition="*res://Game UI/Transitions/level_transition.tscn"
+Global="*res://Game/Global.gd"
+NavigationManager="*res://Game/navigation_manager.gd"
+HealthManager="*res://Player/Player UI/health_manager.gd"
+CollectibleManager="*res://Pick Ups/collectible_manager.gd"
+SceneManager="*res://Game/scene_manager.tscn"
+GameManager="*res://Game/game_manager.gd"
 
 [display]
 
@@ -40,8 +40,8 @@ window/stretch/scale_mode="integer"
 
 [gui]
 
-theme/custom="res://default_theme.tres"
-theme/custom_font="res://pixel_font.ttf"
+theme/custom="res://Textures/default_theme.tres"
+theme/custom_font="res://Fonts/pixel_font.ttf"
 theme/default_font_subpixel_positioning=0
 
 [input]

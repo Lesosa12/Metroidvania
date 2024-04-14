@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://coa8g2a7felca"]
+
+[ext_resource type="Script" path="res://Player/bullet.gd" id="1_3mtlc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndwo3"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"bullet",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tu2t3"]
+
+[node name="Bullet" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ndwo3")
+animation = &"bullet"
+script = ExtResource("1_3mtlc")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_tu2t3")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

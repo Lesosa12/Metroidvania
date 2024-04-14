@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://syopt8tq8nb6"]
+
+[ext_resource type="Script" path="res://Game/door.gd" id="1_n6ywr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ku7c"]
+
+[node name="Door" type="Node2D"]
+script = ExtResource("1_n6ywr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+
+[node name="ExitArea2D" type="Area2D" parent="Sprite2D"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ExitArea2D"]
+shape = SubResource("RectangleShape2D_4ku7c")
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D/ExitArea2D"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="Spawn" type="Marker2D" parent="Sprite2D/ExitArea2D"]
+
+[connection signal="body_entered" from="Sprite2D/ExitArea2D" to="." method="_on_exit_area_2d_body_entered"]
