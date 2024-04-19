@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
-var bullet = preload("res://Scenes/bullet.tscn")
-var player_death_effect = preload("res://player_death_effect.tscn")
+var bullet = preload("res://Player/bullet.tscn")
+var player_death_effect = preload("res://Player/Player Effects/player_death_effect.tscn")
 
 @onready var muzzle : Marker2D = $Muzzle
 @onready var hit_animation_player = $HitAnimationPlayer
@@ -144,8 +144,10 @@ func player_shooting(delta):
 func player_muzzle_position():
 	var direction = input_movement()
 	
-	if direction > 0:
+	if direction != null and direction > 0:
 		muzzle.position.x = muzzle_position.x
+	elif direction != null and direction < 0:
+		muzzle.position.x = -muzzle_position.x
 
 func update_animations(input_axis):
 	if input_axis != 0:

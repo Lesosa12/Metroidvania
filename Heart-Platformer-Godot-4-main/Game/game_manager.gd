@@ -1,6 +1,6 @@
 extends Node
 
-var main_menu_screen = preload("res://Scenes/start_menu.tscn")
+var main_menu_screen = preload("res://Game UI/start_menu.tscn")
 #var pause_menu_screen = preload("add path for menu screen")
 
 func start_game():
