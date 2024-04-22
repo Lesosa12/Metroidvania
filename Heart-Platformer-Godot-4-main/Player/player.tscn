@@ -85,12 +85,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_delq7"]
-size = Vector2(8, 15)
+size = Vector2(6, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1anyu"]
-size = Vector2(6, 12)
+size = Vector2(8, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecm5x"]
+size = Vector2(8, 26)
 
 [sub_resource type="Animation" id="Animation_uqiwg"]
 length = 0.001
@@ -140,13 +141,15 @@ metadata/Player = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_c7f6b")
-position = Vector2(0, -10)
+position = Vector2(2.08165e-12, -19)
+scale = Vector2(1, 1.9)
 sprite_frames = SubResource("SpriteFrames_v2gsa")
 animation = &"idle"
 frame_progress = 0.429613
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7.5)
+position = Vector2(0, -15)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_delq7")
 
 [node name="CoyoteJumpTimer" type="Timer" parent="."]
@@ -162,7 +165,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
-position = Vector2(0, -7)
+position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_1anyu")
 
 [node name="Muzzle" type="Marker2D" parent="."]
@@ -172,6 +175,7 @@ collision_layer = 2
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_ecm5x")
 
 [node name="HitAnimationPlayer" type="AnimationPlayer" parent="."]
