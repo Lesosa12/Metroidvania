@@ -16,7 +16,7 @@ var stored_scale = Vector2.ZERO
 # Player node (set in the editor)
 #@onready var player = get_node("../Player")
 # Camera parameters
-var cameraOffset = Vector2(0, -22)
+var cameraOffset = Vector2(0, 0)
 var cameraSpeed = 5.0
 var weight : float
 
