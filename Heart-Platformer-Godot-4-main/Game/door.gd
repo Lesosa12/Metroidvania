@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 class_name Door
 
@@ -7,12 +7,12 @@ class_name Door
 @export var spawn_direction = "up"
 @export var next_scene : String
 
-@onready var spawn = $Spawn
+@onready var spawn = $Sprite2D/ExitArea2D/Spawn
 
 @export var nextRoomName: String = ""
 @export var cameraPosition: Vector2 = Vector2.ZERO
 
-@onready var marker_2d = $Marker2D
+@onready var marker_2d = $Sprite2D/ExitArea2D/Spawn
 
 func _on_exit_area_2d_body_entered(body):
 	body.global_position = marker_2d.global_position

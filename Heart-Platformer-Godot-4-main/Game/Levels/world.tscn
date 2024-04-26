@@ -53,6 +53,7 @@ script = ExtResource("1_w0lbl")
 [node name="Player" parent="." instance=ExtResource("2_g26gs")]
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_d2278")]
+zoom = Vector2(1, 1.135)
 editor_draw_limits = true
 player = NodePath("../Player")
 

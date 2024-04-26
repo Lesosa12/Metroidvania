@@ -61,7 +61,7 @@ func setPosition(roomposition):
 	stored_position = roomposition
 
 func _process(delta):
-	if player:
+	if player != null:
 		# Calculate the target position for the camera
 		var targetPosition = player.global_position + cameraOffset
 
