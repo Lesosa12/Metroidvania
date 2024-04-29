@@ -25,7 +25,5 @@ position = Vector2(-2, -26)
 
 [node name="Door1" parent="." index="9" instance=ExtResource("4_mpvls")]
 position = Vector2(662, 24)
-destination_level_tag = "res://Game/Levels/level_two.tscn"
-destination_door_tag = "Door2"
 next_scene = "Level2"
-nextRoomName = "Level2"
+destination_door_tag = "Door2"

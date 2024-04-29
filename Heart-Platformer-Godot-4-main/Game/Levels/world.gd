@@ -15,6 +15,9 @@ var spawnPoints = {}
 @onready var level_time_label = %LevelTimeLabel
 
 func _ready():
+	if Global.last_world_position != Vector2(0,0):
+		$LevelTileMap/Player.position = Global.last_world_position + Vector2(0,5)
+	
 	if NavigationManager.spawn_door_tag != null:
 		_on_level_spawn(NavigationManager.spawn_door_tag)
 	

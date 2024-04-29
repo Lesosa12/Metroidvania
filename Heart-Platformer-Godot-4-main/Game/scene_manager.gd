@@ -1,7 +1,8 @@
 extends Node2D
 
-var scenes : Dictionary = { "Level1" : "res://Game/Levels/level_two.tscn",
-							"Level2" : "res://Game/Levels/level_two.tscn"} #repeat as needed
+var scenes : Dictionary = { "Level1" : "res://Game/Levels/level_one.tscn",
+							"Level2" : "res://Game/Levels/level_two.tscn",
+							"Level3" : "res://Game/Levels/level_three.tscn"} #repeat as needed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

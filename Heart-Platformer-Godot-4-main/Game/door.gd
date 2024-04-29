@@ -2,14 +2,11 @@ extends Node2D
 
 class_name Door
 
-@export var destination_level_tag: String
+@export var next_scene : String
 @export var destination_door_tag: String
 @export var spawn_direction = "up"
-@export var next_scene : String
 
-@onready var spawn = $Sprite2D/ExitArea2D/Spawn
 
-@export var nextRoomName: String = ""
 @export var cameraPosition: Vector2 = Vector2.ZERO
 
 @onready var marker_2d = $Sprite2D/ExitArea2D/Spawn
@@ -19,7 +16,7 @@ func _on_exit_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
 		var player = body as CharacterBody2D
 		player.queue_free()
-		NavigationManager.go_to_level(destination_level_tag, destination_door_tag)
+		NavigationManager.go_to_level(next_scene, destination_door_tag)
 		#change_room()
 		
 		await get_tree().create_timer(3.0).timeout
@@ -39,4 +36,4 @@ func change_room():
 func _on_camera_movement_completed(what: Variant, key: NodePath):
 	# Change to the next room
 	get_tree().call_group("rooms", "set_visible", false)
-	get_tree().call_group(nextRoomName, "set_visible", true)
+	get_tree().call_group(next_scene, "set_visible", true)

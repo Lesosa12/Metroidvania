@@ -16,8 +16,11 @@ visible = false
 
 [node name="Door2" parent="." index="8" instance=ExtResource("2_spvqg")]
 position = Vector2(10, 104)
-rotation = 3.14159
-destination_level_tag = "res://Game/Levels/level_one.tscn"
-destination_door_tag = "Door1"
+scale = Vector2(-1, 2.4)
 next_scene = "Level1"
-nextRoomName = "Level1"
+destination_door_tag = "Door1"
+
+[node name="Door3" parent="." index="9" instance=ExtResource("2_spvqg")]
+position = Vector2(246, 104)
+next_scene = "Level3"
+destination_door_tag = "Door4"

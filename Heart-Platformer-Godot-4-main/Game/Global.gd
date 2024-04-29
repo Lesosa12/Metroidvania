@@ -3,6 +3,7 @@ extends Node
 static var nextSceneSpawnPoint = {}
 static var currentDoor = ""
 
+var  last_world_position = Vector2(0,0)
 
 # Global scope
 var spawnPoints = {
