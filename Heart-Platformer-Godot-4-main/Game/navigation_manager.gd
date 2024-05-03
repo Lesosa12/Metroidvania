@@ -2,6 +2,7 @@ extends Node
 
 const scene_level1 = preload("res://Game/Levels/level_one.tscn")
 const scene_level2 = preload("res://Game/Levels/level_two.tscn")
+const scene_level3 = preload("res://Game/Levels/level_three.tscn")
 
 signal  on_trigger_player_spawn
 

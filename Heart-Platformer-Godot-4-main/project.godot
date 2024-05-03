@@ -18,9 +18,9 @@ config/icon="res://Images/icon.svg"
 
 [autoload]
 
+Global="*res://Game/global.tscn"
 Events="*res://Game/Events.gd"
 LevelTransition="*res://Game UI/Transitions/level_transition.tscn"
-Global="*res://Game/Global.gd"
 NavigationManager="*res://Game/navigation_manager.gd"
 HealthManager="*res://Player/Player UI/health_manager.gd"
 CollectibleManager="*res://Pick Ups/collectible_manager.gd"

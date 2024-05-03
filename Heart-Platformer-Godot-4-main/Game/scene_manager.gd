@@ -1,5 +1,8 @@
 extends Node2D
 
+
+# Default spawn point
+
 var scenes : Dictionary = { "Level1" : "res://Game/Levels/level_one.tscn",
 							"Level2" : "res://Game/Levels/level_two.tscn",
 							"Level3" : "res://Game/Levels/level_three.tscn"} #repeat as needed

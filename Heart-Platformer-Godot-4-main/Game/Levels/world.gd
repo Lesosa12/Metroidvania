@@ -25,15 +25,7 @@ func _ready():
 		level_completed.next_level_button.text = "Victory Screen"
 		next_level = load("res://victory_screen.tscn")
 		
-	Events.level_completed.connect(show_level_completed)
-	get_tree().paused = true
-	start_in.visible = true
-	LevelTransition.fade_from_black()
-	animation_player.play("countdown")
-	await animation_player.animation_finished
-	get_tree().paused = false
-	start_in.visible = false
-	start_level_msec = Time.get_ticks_msec()
+	
 
 func _on_level_spawn(destination_tag: String):
 	var door_path = "Doors/Door" + destination_tag

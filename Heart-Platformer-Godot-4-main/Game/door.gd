@@ -5,7 +5,7 @@ class_name Door
 @export var next_scene : String
 @export var destination_door_tag: String
 @export var spawn_direction = "up"
-
+var player = Player
 
 @export var cameraPosition: Vector2 = Vector2.ZERO
 
@@ -19,6 +19,9 @@ func _on_exit_area_2d_body_entered(body):
 		NavigationManager.go_to_level(next_scene, destination_door_tag)
 		#change_room()
 		
+		# Save player position before exiting
+		playerSpawnPoint = player.global_position
+		
 		await get_tree().create_timer(3.0).timeout
 		#print("scene transition")
 		SceneManager.transition_to_scene(next_scene)
@@ -26,7 +29,8 @@ func _on_exit_area_2d_body_entered(body):
 func change_room():
 	var globalCamera = get_node("/root/Camera2D")
 	var tween = globalCamera.tween
-
+	# Set player position to the stored spawn point
+	player.global_position = playerSpawnPoint
 	tween.interpolate_property(globalCamera, "position", globalCamera.global_position, cameraPosition, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 

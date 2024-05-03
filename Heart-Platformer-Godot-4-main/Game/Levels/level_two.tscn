@@ -19,8 +19,12 @@ position = Vector2(10, 104)
 scale = Vector2(-1, 2.4)
 next_scene = "Level1"
 destination_door_tag = "Door1"
+spawn_direction = "up"
+cameraPosition = Vector2(0, 0)
 
 [node name="Door3" parent="." index="9" instance=ExtResource("2_spvqg")]
 position = Vector2(246, 104)
 next_scene = "Level3"
 destination_door_tag = "Door4"
+spawn_direction = "up"
+cameraPosition = Vector2(0, 0)
