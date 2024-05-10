@@ -27,5 +27,3 @@ position = Vector2(-2, -26)
 position = Vector2(662, 24)
 next_scene = "Level2"
 destination_door_tag = "Door2"
-spawn_direction = null
-cameraPosition = null

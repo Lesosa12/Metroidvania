@@ -8,10 +8,6 @@ size = Vector2(10, 20)
 [node name="Door" type="Node2D"]
 scale = Vector2(1, 2.4)
 script = ExtResource("1_n6ywr")
-next_scene = null
-destination_door_tag = null
-spawn_direction = null
-cameraPosition = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
