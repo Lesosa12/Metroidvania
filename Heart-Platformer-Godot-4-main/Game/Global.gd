@@ -4,7 +4,7 @@ static var nextSceneSpawnPoint = {}
 static var currentDoor = ""
 
 var last_world_position = Vector2(0,0)
-var playerSpawnPoint = Vector2(0, 0)  # Default spawn point
+var playerSpawnPoint: Vector2 = Vector2.ZERO
 
 # Global scope
 var spawnPoints = {
@@ -28,6 +28,13 @@ func _on_Player_body_entered(body):
 # Function to get the spawn point for a given scene and door
 func get_spawn_point(scene: String, door: String) -> String:
 	return spawnPoints.get(scene, {}).get(door, "")
+
+func save_player_position(position: Vector2):
+	playerSpawnPoint = position
+
+# Call this function when the player reenters a room
+func set_player_spawn_position():
+	$Player.global_position = playerSpawnPoint
 
 func _ready():
 	if get_node("/root/Global").playerSpawnPoint != Vector2(0, 0):

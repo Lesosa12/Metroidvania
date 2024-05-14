@@ -33,9 +33,13 @@ var current_state : State
 var muzzle_position 
 var current_jump_count : int
 
+signal door_entered(String)
+
 func _ready():
 	NavigationManager.on_trigger_player_spawn.connect(_on_spawn)
 	muzzle_position = muzzle.position
+	
+	get_node("/root/Global").set_player_spawn_position()
 
 func _on_spawn(positon: Vector2, direction: String):
 	global_position = position
