@@ -26,6 +26,7 @@ HealthManager="*res://Player/Player UI/health_manager.gd"
 CollectibleManager="*res://Pick Ups/collectible_manager.gd"
 SceneManager="*res://Game/scene_manager.tscn"
 GameManager="*res://Game/game_manager.gd"
+PlayerGlobal="*res://Player/player.tscn"
 
 [display]
 

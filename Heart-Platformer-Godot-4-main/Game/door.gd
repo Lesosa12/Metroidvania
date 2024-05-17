@@ -5,22 +5,31 @@ class_name Door
 @export var next_scene : String
 @export var destination_door_tag: String
 @export var spawn_direction = "up"
-@onready var player = get_node("/root/LevelOne/Player")
+@onready var player = get_node("/root/GlobalPlayer")
 
 @export var cameraPosition: Vector2 = Vector2.ZERO
 var playerSpawnPoint: Vector2 = Vector2(0, 0)  # Global variable to store spawn point
-@onready var spawnNode = $Sprite2D/ExitArea2D/Spawn
-@onready var marker_2d = $Sprite2D/ExitArea2D/Spawn
+@onready var marker_2d = $Spawn
 
 func _ready():
+	var exit_area = $ExitArea2D
+	if exit_area == null:
+		print("ExitArea2D node is not found!")
+		return
+	exit_area.connect("body_entered", Callable(self, "_on_body_entered"))
+	print("ExitArea2D node connected successfully.")
 	# Set the player's initial position to the spawn point
-	if spawnNode != null:
-		player.global_position = spawnNode.global_position
-	else:
-		print("Spawn node is null!")
+	#if spawnNode != null:
+		#player.global_position = spawnNode.global_position
+	#else:
+		#print("Spawn node is null!")
+	pass
 
 func _on_exit_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
+		Global.set_spawn_point(marker_2d.global_position)
+		emit_signal("door_entered", "door_name")  # Assuming you want to pass door_name as a string
+		get_tree().change_scene_to_file("res://path_to_next_scene.tscn")  # Replace with your scene path
 		var player = body as CharacterBody2D
 		body.global_position = marker_2d.global_position
 		player.queue_free()

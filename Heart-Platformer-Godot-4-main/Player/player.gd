@@ -27,6 +27,8 @@ var was_wall_normal = Vector2.ZERO
 @onready var starting_position = global_position
 @onready var wall_jump_timer = $WallJumpTimer
 
+@onready var globalNode = get_node("/root/Global")
+
 enum State {Idle, Run, Jump, Shoot}
 
 var current_state : State
@@ -38,6 +40,10 @@ signal door_entered(String)
 func _ready():
 	NavigationManager.on_trigger_player_spawn.connect(_on_spawn)
 	muzzle_position = muzzle.position
+	
+	if globalNode.player_spawn_point != Vector2.ZERO:
+		global_position = globalNode.player_spawn_point
+		print("Player position set to: ", global_position)
 	
 	get_node("/root/Global").set_player_spawn_position()
 

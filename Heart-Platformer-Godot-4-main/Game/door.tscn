@@ -26,7 +26,7 @@ offset_top = -10.0
 offset_right = 10.0
 offset_bottom = 10.0
 
-[node name="Spawn" type="Marker2D" parent="Sprite2D/ExitArea2D"]
-position = Vector2(-23, 0)
+[node name="Spawn" type="Marker2D" parent="Sprite2D"]
+position = Vector2(-24, 0)
 
 [connection signal="body_entered" from="Sprite2D/ExitArea2D" to="." method="_on_exit_area_2d_body_entered"]
