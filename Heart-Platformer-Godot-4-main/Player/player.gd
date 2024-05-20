@@ -44,8 +44,7 @@ func _ready():
 	if globalNode.player_spawn_point != Vector2.ZERO:
 		global_position = globalNode.player_spawn_point
 		print("Player position set to: ", global_position)
-	
-	get_node("/root/Global").set_player_spawn_position()
+	#get_node("/root/Global").set_player_spawn_position()
 
 func _on_spawn(positon: Vector2, direction: String):
 	global_position = position

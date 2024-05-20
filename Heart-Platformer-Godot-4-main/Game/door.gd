@@ -9,38 +9,39 @@ class_name Door
 
 @export var cameraPosition: Vector2 = Vector2.ZERO
 var playerSpawnPoint: Vector2 = Vector2(0, 0)  # Global variable to store spawn point
-@onready var marker_2d = $Spawn
+@onready var exit_area = $Sprite2D/ExitArea2D
+@onready var marker_2d = $Sprite2D/Spawn
+signal door_entered(door_entered: String)
 
 func _ready():
-	var exit_area = $ExitArea2D
 	if exit_area == null:
-		print("ExitArea2D node is not found!")
-		return
-	exit_area.connect("body_entered", Callable(self, "_on_body_entered"))
-	print("ExitArea2D node connected successfully.")
-	# Set the player's initial position to the spawn point
-	#if spawnNode != null:
-		#player.global_position = spawnNode.global_position
-	#else:
-		#print("Spawn node is null!")
-	pass
+		print("Error: ExitArea2D node is not found!")
+	else:
+		exit_area.connect("body_entered", Callable(self, "_on_body_entered"))
+		print("ExitArea2D node connected successfully.")
 
+	if marker_2d == null:
+		print("Error: Spawn node (marker_2d) is not found!")
+	else:
+		print("Spawn node (marker_2d) found at position: ", marker_2d.global_position)
+		
 func _on_exit_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
-		Global.set_spawn_point(marker_2d.global_position)
-		emit_signal("door_entered", "door_name")  # Assuming you want to pass door_name as a string
-		get_tree().change_scene_to_file("res://path_to_next_scene.tscn")  # Replace with your scene path
-		var player = body as CharacterBody2D
-		body.global_position = marker_2d.global_position
-		player.queue_free()
-		NavigationManager.go_to_level(next_scene, destination_door_tag)
-		#change_room()
-		
-		# Save player position before exiting
-		playerSpawnPoint = body.global_position
-		await get_tree().create_timer(3.0).timeout
-		#print("scene transition")
-		SceneManager.transition_to_scene(next_scene)
+		if marker_2d != null:
+			Global.set_spawn_point(marker_2d.global_position)
+			emit_signal("door_entered", "door_name")  # Replace "door_name" with your actual door name
+			get_tree().change_scene_to_file(next_scene)  # Replace with your scene path
+			
+			var player = body as CharacterBody2D
+			body.global_position = marker_2d.global_position
+			player.queue_free()
+			NavigationManager.go_to_level(next_scene, destination_door_tag)
+			playerSpawnPoint = body.global_position
+			await get_tree().create_timer(3.0).timeout
+			#print("scene transition")
+			SceneManager.transition_to_scene(next_scene)
+		else:
+			print("Error: Spawn node (marker_2d) is null in _on_body_entered")
 
 func change_room():
 	var globalCamera = get_node("/root/Camera2D")

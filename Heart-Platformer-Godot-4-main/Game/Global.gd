@@ -33,14 +33,8 @@ func get_spawn_point(scene: String, door: String) -> String:
 
 func set_spawn_point(position: Vector2):
 	player_spawn_point = position
+	print("Spawn point set to: ", player_spawn_point)
 
-func save_player_position(position: Vector2):
-	playerSpawnPoint = position
-
-# Call this function when the player reenters a room
-func set_player_spawn_position():
-	#$Player.global_position = playerSpawnPoint
-	pass
 
 func _ready():
 	if get_node("/root/Global").playerSpawnPoint != Vector2(0, 0):
